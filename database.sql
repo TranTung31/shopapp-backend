@@ -63,6 +63,16 @@ CREATE TABLE products(
   FOREIGN KEY (category_id) REFERENCES categories(id)
 );
 
+-- ON DELETE CASCADE giúp khi xóa 1 product trong bảng products thì product images của sản phẩm đó cũng bị xóa theo
+CREATE TABLE product_images(
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    product_id INT,
+    FOREIGN KEY (product_id) REFERENCES products(id),
+    CONSTRAINT fk_product_images_product_id
+        FOREIGN KEY (product_id) REFERENCES products(id) ON DELETE CASCADE,
+    image_url VARCHAR(300)
+);
+
 -- Bảng đặt hàng
 CREATE TABLE orders(
   id INT PRIMARY KEY AUTO_INCREMENT,
