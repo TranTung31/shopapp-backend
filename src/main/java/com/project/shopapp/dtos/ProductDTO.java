@@ -8,6 +8,8 @@ import jakarta.validation.constraints.Size;
 import lombok.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.List;
+
 @Data // toString
 @Getter
 @Setter
@@ -25,9 +27,9 @@ public class ProductDTO {
     @JsonProperty("category_id")
     private String categoryId;
 
-    private MultipartFile file;
+    private List<MultipartFile> files;
 
-    public MultipartFile getFile() {
-        return file;
+    public List<MultipartFile> getFiles() {
+        return files;
     }
 }
